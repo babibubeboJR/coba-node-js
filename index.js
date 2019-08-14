@@ -3,8 +3,11 @@ var todoController = require('./controllers/todoController');
 
 var app = express();
 
+var http = require('http');
+var server = http.server(app);
+
 //setup engine
-app.set('view engine', 'ejs');
+server.set('view engine', 'ejs');
 
 //static files
 app.use(express.static('./public'));
@@ -13,5 +16,6 @@ app.use(express.static('./public'));
 todoController(app);
 
 //port listener
-app.listen(process.env.PORT || 3000);
-console.log('Connected on port 3000');
+server.listen(process.env.PORT || 3000, function(){
+	console.log('Connected on port 3000');
+});

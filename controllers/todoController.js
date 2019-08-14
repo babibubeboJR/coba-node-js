@@ -16,7 +16,7 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 module.exports = function(app){
 
-    app.get('/todo', function(req, res){
+    app.get('/todo' || '/', function(req, res){
         //get data mongodb
         todo.find({}, function(err, data){
             if (err) throw err;
